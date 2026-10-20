@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MountBook — pocketappstudio</title><meta name="description" content="A job book for solo taxidermy shops. Track every mount, deposit and pickup on your phone. One price, no monthly bill."><link rel="stylesheet" href="style.css"></head><body>
+<header>pocketappstudio</header><main>
+<section id="hero" style="padding-top:20px"><span class="tag">Pre-order · Early access</span>
+<h1>Every mount.<br>One simple book.</h1><p class="lead">A job book for solo taxidermy shops. Track every mount, deposit and pickup on your phone. One price, no monthly bill.</p>
+<a class="btn" href="#pricing">Reserve early access</a><a class="btn alt" href="#demo">Try the sample</a></section>
+<section id="how"><h2>How it works</h2><ol class="steps"><li><b>Log the drop-off.</b> Customer, species, mount type, tag number, deposit.</li><li><b>Move it along.</b> Tannery, mounting, drying, ready. One tap each.</li><li><b>Know who owes.</b> Balances and pickups at a glance.</li></ol></section>
+<section id="demo"><h2>Your shop board</h2><p class="lead">Tap a job to move it to the next stage.</p>
+<div class="phone"><div class="screen" id="app"><div style="padding:26px 20px"><div class="top"><b style="font-family:Georgia,serif;font-size:20px">Shop board</b><span class="muted" id="cnt"></span></div>
+<div id="jobs"></div><div style="margin-top:14px;padding-top:12px;border-top:1px solid #eee;display:flex;justify-content:space-between;font-size:14px"><span>Balances due</span><b id="due"></b></div>
+<button class="pill l" style="width:100%;margin-top:12px" onclick="addJob()">+ New drop-off (sample)</button></div></div></div><p class="mini" style="text-align:center">Sample only. Names and numbers are examples.</p></section>
+<section id="pricing"><h2>Pre-order</h2>
+<p class="fine">Not built yet. Launch date: not yet set. Pre-order buyers get early access. If it doesn't ship, you get a full refund through Gumroad.</p><div class="tier"><h3>Free</h3><div class="price">$0</div><ul><li>Up to 10 open jobs</li><li>Shop board on your phone</li></ul><a class="btn alt" href="#gumroad-TBD">Join the free list</a></div><div class="tier best"><h3>Shop Book</h3><div class="price">$39 <span class="fine">one-time</span></div><ul><li>Unlimited jobs</li><li>Deposits & balances</li><li>Tag & permit numbers</li><li>Printable intake tags</li><li>Works offline</li></ul><a class="btn" href="#gumroad-TBD">Pre-order on Gumroad</a></div></section>
+<section id="faq"><h2>Questions</h2><details><summary>Is it a subscription?</summary><p>No. Shop Book is one payment.</p></details><details><summary>Does it work without signal?</summary><p>That is the plan: it is designed to work offline in the shop.</p></details><details><summary>Does it replace my state paperwork?</summary><p>No. It helps you keep records, but you are still responsible for your state and federal wildlife rules.</p></details>
+<details><summary>When does it launch?</summary><p>Not yet set. Pre-order buyers get early access first.</p></details>
+<details><summary>What if it never ships?</summary><p>You get a full refund through Gumroad.</p></details>
+<details><summary>How do I get help?</summary><p>Message us through Gumroad.</p></details></section>
+</main><footer>© 2026 pocketappstudio<br><br><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></footer>
+<script>const S=["Intake","At tannery","Mounting","Drying","Ready","Picked up"],C=["","b","","b","g","g"];
+let J=[{n:"#118 Whitetail shoulder",c:"R. Miller",s:2,b:450},{n:"#121 Mallard, flying",c:"T. Reyes",s:1,b:220},{n:"#124 Bass, skin mount",c:"J. Hart",s:4,b:180},{n:"#127 Turkey fan & beard",c:"D. Cole",s:0,b:95}];
+function r(){jobs.innerHTML=J.map((j,i)=>`<div class="row" onclick="adv(${i})"><div><b>${j.n}</b><div class="muted">${j.c} · $${j.b} due</div></div><span class="chip ${C[j.s]}">${S[j.s]}</span></div>`).join("");
+due.textContent="$"+J.filter(j=>j.s<5).reduce((a,j)=>a+j.b,0);cnt.textContent=J.filter(j=>j.s<5).length+" open"}
+function adv(i){J[i].s=Math.min(5,J[i].s+1);if(J[i].s==5)J[i].b=0;r()}
+function addJob(){J.unshift({n:"#"+(128+J.length)+" Elk European",c:"New customer",s:0,b:300});r()}r()</script></body></html>
